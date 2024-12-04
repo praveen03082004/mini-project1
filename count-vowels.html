@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>count vowels</title>
+    
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    text-align: center; 
+    background: #fffcfce0;
+    padding: 20px 40px 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    max-width: fit-content;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.buttons {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button#countVowelsBtn {
+    background-color: #28a745;
+    color: white;
+}
+
+button#resetBtn {
+    background-color: #dc3545;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+h2 {
+    font-size: 20px;
+    color: #333;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vowel Counter</h1>
+        <textarea id="inputText"></textarea>
+        <div class="buttons">
+            <button id="countVowelsBtn">Count Vowels</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+        <h2>Vowel Count: <span id="vowelCount">0</span></h2>
+    </div>
+
+
+
+    <script>
+
+
+        // select html elements
+const inputText = document.getElementById("inputText");
+const countVowelsBtn = document.getElementById("countVowelsBtn");
+const resetBtn = document.getElementById("resetBtn");
+const vowelCount = document.getElementById("vowelCount");
+
+// Function to count vowels 
+function countVowels() {
+    const text = inputText.value.toLowerCase(); 
+    const vowels = "aeiou";
+    let count = 0;
+
+    for (let i = 0; i < text.length; i++) {
+        if (vowels.indexOf(text[i]) !== -1) {
+            count++;
+        }
+    }
+
+    // Display the vowel count
+    vowelCount.textContent = count;
+}
+
+// Function to reset the textarea and vowel count
+function resetFields() {
+    inputText.value = ""; // Clear the textarea
+    vowelCount.textContent = 0; // Reset the vowel count
+}
+
+countVowelsBtn.addEventListener("click", countVowels);
+resetBtn.addEventListener("click", resetFields);
+
+
+    </script>
+</body>
+</html>
